@@ -1,0 +1,21 @@
+{
+  "name": "alteryxgalleryapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Schubiger",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tmschbgr/AlteryxGalleryAPI-JS-POC.git"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "oauth-signature": "^1.5.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
