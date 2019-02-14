@@ -26,13 +26,16 @@ module.exports = {
 
     getWorkflows: () => alteryxRequest("GET", "workflows/subscription/"),
 
-    queueWorkflow: (appId) => alteryxRequest("POST", `workflows/${appId}/jobs/`),
+    getWorkflowQuestions: (appId) => alteryxRequest("GET", `workflows/${appId}/questions/`),
 
-    queueWorkflowAsync: (appId, intervalInSec) => {
-        return alteryxRequest("POST", `workflows/${appId}/jobs/`).then(response => {
-           return checkJobStatus(response.id, intervalInSec)
-        })
-    },
+    queueWorkflow: (appId, questions = []) => alteryxRequest("POST", `workflows/${appId}/jobs/`, { questions }),
+
+    queueWorkflowAsync: (appId, questions = [], intervalInSec) =>
+        alteryxRequest("POST", `workflows/${appId}/jobs/`, { questions })
+            .then(response =>
+                checkJobStatus(response.id, intervalInSec))
+            .catch(err => err)
+    ,
 
     getJob: (jobId) => alteryxRequest("GET", `jobs/${jobId}/`),
 
